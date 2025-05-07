@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs
+*.log
+logs/**/*.log
+
+# Compiled output
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# dotenv environment files
+.env
+.env.*
+
+
+# VSCode
+.vscode/
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: coverage reports
+coverage/
+
+# Optional: local database/test files
+*.sqlite
+*.local
+
+# Optional: pm2 process logs
+pids
+*.pid
+*.seed
+*.pid.lock
