@@ -3,12 +3,13 @@ import type { Document } from '../types';
 interface Props {
   document: Document | null;
 }
-
 const DocumentView: React.FC<Props> = ({ document }) => {
   const handleDownload = async () => {
     if (!document) return;
     try {
-      const response = await fetch('http://127.0.0.1:8000/convert' , {
+
+      const response = await fetch(`http://convert:6000/convert` , {
+        mode: 'no-cors',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: document.content }),
@@ -20,10 +21,10 @@ const DocumentView: React.FC<Props> = ({ document }) => {
 
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
-      const link = document.createElement('a');
+      const link = window.document.createElement('a');
       link.href = url;
       link.setAttribute('download', `${document.title}.pdf`);
-      document.body.appendChild(link);
+      window.document.body.appendChild(link);
       link.click();
       link.parentNode?.removeChild(link);
 

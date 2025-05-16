@@ -1,0 +1,33 @@
+services:
+  convert:
+    build: ./converter
+    ports:
+      - "6000:6000"
+    networks:
+      - aruponet
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:3000"
+    networks:
+      - aruponet
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    networks:
+      - aruponet
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - aruponet
+
+networks:
+    aruponet:

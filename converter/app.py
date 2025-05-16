@@ -1,9 +1,9 @@
 from flask import Flask, request, send_file, jsonify
 from fpdf import FPDF
 import io
-
+from  flask_cors import CORS 
 app = Flask(__name__)
-
+CORS(app) 
 @app.route('/convert', methods=['POST'])
 def convert_to_pdf():
     data = request.get_json()
@@ -29,4 +29,4 @@ def convert_to_pdf():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True, port=6000)
+    app.run(host="0.0.0.0", port=6000)

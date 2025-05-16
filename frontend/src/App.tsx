@@ -3,8 +3,8 @@ import DocumentForm from './components/DocumentForm';
 import DocumentList from './components/DocumentList';
 import DocumentView from './components/DocumentView';
 import type { Document } from './types';
+const API_URL = `http://backend:3000/documents`; 
 
-const API_URL = 'http://127.0.0.1:3000/documents';  // Cambia si usas otro puerto/backend
 
 function App() {
   const [documents, setDocuments] = useState<Document[]>([]);
@@ -37,7 +37,7 @@ function App() {
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',},
         body: JSON.stringify(doc),
       });
       if (!res.ok) throw new Error('Error al crear documento');
